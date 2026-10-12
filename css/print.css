@@ -1,0 +1,98 @@
+/* print.css — Print-specific rules for receipts, reports, and documents. */
+
+@media print {
+  /* Hide app chrome */
+  .topbar,
+  .bottomnav,
+  .sidebar,
+  .sidebar-backdrop,
+  .page-header__actions,
+  .btn,
+  .icon-btn,
+  .toolbar,
+  .toast-stack,
+  .modal-overlay,
+  .quick-actions,
+  .card-list__actions {
+    display: none !important;
+  }
+
+  /* Reset colors for print */
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  /* Page layout */
+  .page {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Make cards flat for print */
+  .card,
+  .report-section,
+  .card-list__item {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .card-list__item {
+    grid-template-columns: auto 1fr;
+  }
+
+  /* KPI grid: 2 columns for print */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6pt;
+  }
+  .stat-tile {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    padding: 6pt !important;
+  }
+  .stat-tile__value { font-size: 12pt !important; color: #000 !important; }
+
+  /* Tables: keep on one page where possible */
+  .data-table {
+    font-size: 9pt;
+  }
+  .data-table thead { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .data-table th, .data-table td { padding: 4pt 6pt; }
+
+  /* Color override: keep numbers legible */
+  .pos { color: #1a6c1a !important; }
+  .neg { color: #8a1a1a !important; }
+  .muted { color: #555 !important; }
+
+  /* Section titles */
+  .section-title, .card__title, .page-header__title {
+    color: #000 !important;
+  }
+
+  /* Footer */
+  .page::after {
+    content: "عِمارة — تقرير مطبوع بتاريخ " attr(data-print-date);
+    display: block;
+    margin-top: 12pt;
+    font-size: 8pt;
+    color: #777;
+    text-align: center;
+  }
+
+  /* Avoid breaking rows */
+  tr, .card-list__item { break-inside: avoid; }
+
+  /* Use full width */
+  .app-main { margin: 0 !important; }
+}
+
+/* Receipt window print rules (used by receipts.js pop-up) */
+@media print {
+  /* These apply only inside the receipt popup window */
+}

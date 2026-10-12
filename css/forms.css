@@ -1,0 +1,137 @@
+/* forms.css — Form controls, inputs, validation, layout. */
+
+.form { display: flex; flex-direction: column; gap: var(--s-4); }
+.form-field { display: flex; flex-direction: column; gap: var(--s-2); }
+.form-field--inline { flex-direction: row; align-items: center; gap: var(--s-3); }
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-ink-soft);
+}
+.form-field--inline .form-label { margin: 0; }
+
+.input {
+  display: block;
+  width: 100%;
+  padding: var(--s-3) var(--s-4);
+  background: var(--c-paper);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  color: var(--c-ink);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: border-color var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease);
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+}
+.input::placeholder { color: var(--c-muted); opacity: 0.8; }
+.input:hover { border-color: var(--c-forest-light); }
+.input:focus {
+  outline: none;
+  border-color: var(--c-forest);
+  box-shadow: 0 0 0 3px rgba(31, 95, 63, 0.15);
+}
+.input:disabled {
+  background: var(--c-ivory-dark);
+  color: var(--c-muted);
+  cursor: not-allowed;
+}
+.input--small { padding: var(--s-2) var(--s-3); font-size: 0.85rem; max-width: 120px; }
+
+textarea.input { resize: vertical; min-height: 64px; }
+
+select.input {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237a8a7a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left var(--s-3) center;
+  padding-left: var(--s-8);
+  cursor: pointer;
+}
+[dir="ltr"] select.input {
+  background-position: right var(--s-3) center;
+  padding-left: var(--s-4);
+  padding-right: var(--s-8);
+}
+
+input[type="date"].input,
+input[type="time"].input {
+  cursor: pointer;
+  min-width: 140px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--c-forest);
+  cursor: pointer;
+}
+
+/* Search input */
+.search-input {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%237a8a7a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--s-3) center;
+  padding-right: var(--s-8);
+}
+[dir="ltr"] .search-input {
+  background-position: left var(--s-3) center;
+  padding-right: var(--s-4);
+  padding-left: var(--s-8);
+}
+
+/* Form error */
+.form-error {
+  font-size: 0.8rem;
+  color: var(--c-danger);
+  min-height: 1em;
+  font-weight: 500;
+}
+
+/* Total display */
+.total-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s-4);
+  background: var(--c-forest-tint);
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-forest-light);
+}
+.total-display__value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--c-forest-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Obligation list (collections) */
+.obligation-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--s-2);
+  border: 1px solid var(--c-border-soft);
+  border-radius: var(--r-md);
+  background: var(--c-cream);
+}
+.obligation-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--s-3);
+  align-items: center;
+  padding: var(--s-2) var(--s-3);
+  background: var(--c-paper);
+  border: 1px solid var(--c-border-soft);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+}
+.obligation-row:hover { border-color: var(--c-border); }
+.obligation-row__title { font-weight: 600; font-size: 0.9rem; }
+.obligation-row__sub { font-size: 0.78rem; color: var(--c-muted); margin-top: 2px; }
+.obligation-row input[type="checkbox"] { width: 18px; height: 18px; }

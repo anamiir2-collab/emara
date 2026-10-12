@@ -1,0 +1,77 @@
+/* responsive.css — Responsive adjustments for small phones, tablets, and large desktops. */
+
+/* Small phones (≤ 380px) */
+@media (max-width: 380px) {
+  :root {
+    --s-4: 12px;
+    --s-5: 16px;
+    --s-6: 20px;
+  }
+  body { font-size: 14px; }
+  .page { padding-right: var(--s-3); padding-left: var(--s-3); }
+  .page-header__title { font-size: 1.15rem; }
+  .btn { padding: var(--s-2) var(--s-3); font-size: 0.88rem; min-height: 36px; }
+  .stat-tile { padding: var(--s-3); }
+  .stat-tile__value { font-size: 1.1rem; }
+  .card-list__item { grid-template-columns: auto 1fr; }
+  .card-list__actions { grid-column: 1 / -1; justify-content: flex-end; }
+  .modal-card { padding: var(--s-4); }
+  .quick-actions { grid-template-columns: 1fr; }
+  .topbar__title { font-size: 0.95rem; }
+  .bn-item__label { font-size: 0.65rem; }
+}
+
+/* Phablets / small tablets (381px – 767px) */
+@media (min-width: 381px) and (max-width: 767px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .kpi-grid--compact { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablets (768px – 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+  .kpi-grid--compact { grid-template-columns: repeat(4, 1fr); }
+  .page { padding: var(--s-5) var(--s-6) var(--s-8); }
+  .quick-actions { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+  .kpi-grid--compact { grid-template-columns: repeat(4, 1fr); }
+  .page { padding: var(--s-6) var(--s-8) var(--s-10); }
+  .quick-actions { grid-template-columns: repeat(3, 1fr); }
+  .modal-card { max-width: 520px; }
+  .modal-card--wide { max-width: 720px; }
+}
+
+/* Large desktop (≥ 1440px) */
+@media (min-width: 1440px) {
+  :root { --shell-max: 1440px; }
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Landscape phones — make bottom nav more compact */
+@media (max-height: 480px) and (orientation: landscape) {
+  :root { --bottomnav-h: 56px; --topbar-h: 48px; }
+  .bn-item__label { display: none; }
+  .bn-item__icon svg { width: 24px; height: 24px; }
+  .page { padding-bottom: calc(var(--bottomnav-h) + var(--safe-bottom) + var(--s-4)); }
+}
+
+/* Print-restricted: hide nav when printing */
+@media print {
+  .topbar, .bottomnav, .sidebar, .sidebar-backdrop, .page-header__actions, .btn, .icon-btn, .toolbar, .toast-stack, .modal-overlay {
+    display: none !important;
+  }
+  .page { padding: 0; max-width: 100%; }
+  .report-section, .card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  body { background: #fff; }
+}
+
+/* Touch-friendly hit areas on coarse pointers */
+@media (pointer: coarse) {
+  .btn, .icon-btn, .bn-item, .side-link { min-height: 40px; }
+  .input { min-height: 44px; }
+  .checkbox, input[type="checkbox"] { width: 22px; height: 22px; }
+}

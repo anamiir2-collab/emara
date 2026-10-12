@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5.0">
+  <meta name="description" content="عِمارة — نظام إدارة العقارات (PWA) يعمل بالكامل في المتصفح بدون خادم. يدعم المباني والوحدات والعقود والتحصيلات والمصروفات والصيانة والتقارير.">
+  <meta name="theme-color" content="#1f5f3f">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="عِمارة">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/icons/icon-512.png">
+  <title>عِمارة | Emara — إدارة العقارات</title>
+
+  <!-- Preload CSS -->
+  <link rel="preload" href="./css/base.css" as="style">
+  <link rel="preload" href="./css/layout.css" as="style">
+
+  <!-- Stylesheets (load order matters: base → layout → components → forms → reports → responsive → print) -->
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/forms.css">
+  <link rel="stylesheet" href="./css/reports.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+  <link rel="stylesheet" href="./css/print.css">
+
+  <!-- Noto Sans Arabic from Google Fonts (optional; app falls back to system fonts if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+
+  <!-- Inline critical bootstrap to avoid white flash before CSS loads -->
+  <style>
+    html, body { background: #fbf8f1; color: #1a1a1a; }
+    #boot-splash {
+      position: fixed; inset: 0; display: grid; place-items: center;
+      background: #fbf8f1; color: #1f5f3f; z-index: 999;
+      font-family: 'Noto Sans Arabic', 'Tahoma', sans-serif;
+    }
+    #boot-splash .boot-mark {
+      width: 64px; height: 64px; border-radius: 16px; background: #1f5f3f;
+      display: grid; place-items: center; color: #fff; font-size: 32px; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(31,95,63,0.25);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    #boot-splash .boot-text { margin-top: 16px; font-size: 14px; color: #7a8a7a; }
+  </style>
+</head>
+<body>
+  <!-- Boot splash removed once app.js renders -->
+  <div id="boot-splash">
+    <div style="text-align:center">
+      <div class="boot-mark">ع</div>
+      <div class="boot-text">جارٍ تحميل عِمارة…</div>
+    </div>
+  </div>
+
+  <div id="app"></div>
+
+  <noscript>
+    <div style="max-width:520px;margin:48px auto;padding:24px;font-family:'Tahoma',sans-serif;text-align:center;color:#1a1a1a;">
+      <h1>عِمارة يتطلب تفعيل JavaScript</h1>
+      <p>التطبيق يعمل بالكامل في المتصفح. فعّل JavaScript ثم أعد تحميل الصفحة.</p>
+    </div>
+  </noscript>
+
+  <!-- Boot the app. app.js is a module; it dynamically imports modules on navigation. -->
+  <script type="module" src="./js/app.js"></script>
+  <script>
+    // Remove boot splash once the app shell has rendered
+    window.addEventListener('load', () => {
+      const remove = () => {
+        const s = document.getElementById('boot-splash');
+        if (s) { s.style.opacity = '0'; s.style.transition = 'opacity 200ms'; setTimeout(() => s.remove(), 250); }
+      };
+      // Wait briefly so app.js can render shell
+      setTimeout(remove, 600);
+    });
+  </script>
+</body>
+</html>

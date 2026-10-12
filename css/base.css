@@ -1,0 +1,156 @@
+/* base.css — Design tokens, reset, base typography.
+   Loaded first. All other CSS files consume these variables. */
+
+:root {
+  /* Palette — forest green & warm ivory */
+  --c-forest: #1f5f3f;
+  --c-forest-dark: #174527;
+  --c-forest-light: #2f8a5a;
+  --c-forest-tint: #e8f1ea;
+  --c-ivory: #f7f3e8;
+  --c-ivory-dark: #efe9d5;
+  --c-cream: #fbf8f1;
+  --c-paper: #ffffff;
+  --c-ink: #1a1a1a;
+  --c-ink-soft: #3d4a3d;
+  --c-muted: #7a8a7a;
+  --c-border: #d8d2c2;
+  --c-border-soft: #ece7d8;
+  --c-danger: #b3261e;
+  --c-danger-tint: #fdecea;
+  --c-warn: #c77700;
+  --c-warn-tint: #fdf3e0;
+  --c-success: #2e7d32;
+  --c-success-tint: #e6f4e7;
+  --c-info: #1f6feb;
+  --c-info-tint: #e6f0fe;
+
+  /* Typography */
+  --font-arabic: 'Noto Sans Arabic', 'Segoe UI', 'Tahoma', system-ui, sans-serif;
+  --font-display: 'Noto Sans Arabic', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Spacing scale (4-pt baseline) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+
+  /* Radius */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(31, 95, 63, 0.06);
+  --shadow-md: 0 2px 8px rgba(31, 95, 63, 0.08);
+  --shadow-lg: 0 8px 24px rgba(31, 95, 63, 0.12);
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+
+  /* Layout */
+  --shell-max: 1280px;
+  --sidebar-w: 260px;
+  --topbar-h: 56px;
+  --bottomnav-h: 64px;
+
+  /* Safe-area aware bottom padding */
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --c-forest: #4ea877;
+  --c-forest-dark: #1f5f3f;
+  --c-forest-light: #6ec498;
+  --c-forest-tint: #1a2c20;
+  --c-ivory: #1c1f1c;
+  --c-ivory-dark: #232723;
+  --c-cream: #1a1d1a;
+  --c-paper: #232723;
+  --c-ink: #f3efe2;
+  --c-ink-soft: #d3cdb8;
+  --c-muted: #9aa89a;
+  --c-border: #3a423a;
+  --c-border-soft: #2c332c;
+  --c-danger-tint: #2e1a18;
+  --c-warn-tint: #2c2418;
+  --c-success-tint: #1a2c1c;
+  --c-info-tint: #18243a;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html, body { height: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px;
+}
+body {
+  font-family: var(--font-arabic);
+  background: var(--c-cream);
+  color: var(--c-ink);
+  line-height: 1.55;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+[dir="rtl"] body { direction: rtl; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { background: none; border: none; cursor: pointer; }
+a { color: var(--c-forest); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img, svg { display: block; max-width: 100%; }
+ul, ol { list-style: none; }
+table { border-collapse: collapse; width: 100%; }
+:focus-visible {
+  outline: 2px solid var(--c-forest);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* Headings */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.3; color: var(--c-ink); }
+h1 { font-size: 1.4rem; }
+h2 { font-size: 1.2rem; }
+h3 { font-size: 1.05rem; }
+h4 { font-size: 0.95rem; }
+
+/* Utility */
+.muted { color: var(--c-muted); font-size: 0.85rem; }
+.divider { border: none; border-top: 1px solid var(--c-border-soft); margin: var(--s-4) 0; }
+.pos { color: var(--c-success); }
+.neg { color: var(--c-danger); }
+.num { font-variant-numeric: tabular-nums; text-align: left; font-feature-settings: 'tnum'; }
+[dir="rtl"] .num { text-align: right; }
+
+/* Hidden attribute */
+[hidden] { display: none !important; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,52 @@
+/* reports.css — Tables and report-specific layout. */
+
+.report-section {
+  background: var(--c-paper);
+  border: 1px solid var(--c-border-soft);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  margin-bottom: var(--s-4);
+  box-shadow: var(--shadow-sm);
+}
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--c-forest-dark);
+  margin-bottom: var(--s-4);
+}
+
+.data-table {
+  width: 100%;
+  font-size: 0.9rem;
+  border: 1px solid var(--c-border-soft);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.data-table thead { background: var(--c-forest-tint); }
+.data-table th {
+  text-align: start;
+  padding: var(--s-3) var(--s-4);
+  font-weight: 700;
+  color: var(--c-forest-dark);
+  font-size: 0.82rem;
+  border-bottom: 1px solid var(--c-border);
+}
+.data-table td {
+  padding: var(--s-3) var(--s-4);
+  border-bottom: 1px solid var(--c-border-soft);
+  color: var(--c-ink-soft);
+}
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: var(--c-cream); }
+.data-table td.num,
+.data-table th.num { text-align: end; font-variant-numeric: tabular-nums; }
+[dir="rtl"] .data-table td.num,
+[dir="rtl"] .data-table th.num { text-align: start; }
+.data-table td.pos { color: var(--c-success); font-weight: 600; }
+.data-table td.neg { color: var(--c-danger); font-weight: 600; }
+
+/* On small screens, allow horizontal scroll */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
