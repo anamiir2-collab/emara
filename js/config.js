@@ -139,7 +139,7 @@ export const ROUTES = [
   { path: '/maintenance', label: 'الصيانة', icon: 'wrench', module: 'maintenance' },
   { path: '/receipts', label: 'الإيصالات', icon: 'receipt', module: 'receipts' },
   { path: '/reports', label: 'التقارير', icon: 'chart', module: 'reports' },
-  { path: '/assistant', label: 'مساعد بُنيان الذكي', icon: 'sparkles', module: 'assistant' },
+  { path: '/assistant', label: 'مساعد بُنيان الذكي', icon: 'user', module: 'assistant' },
   { path: '/portal', label: 'بوابة الساكن', icon: 'user', module: 'resident-portal' },
   { path: '/settings', label: 'الإعدادات', icon: 'gear', module: 'settings' },
 ];
