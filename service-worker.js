@@ -6,7 +6,7 @@
 //   - NEVER cache /download/* exports or backup files (they may contain sensitive data).
 //   - Bump CACHE_VERSION on each release to trigger cleanup & refresh.
 
-const CACHE_VERSION = 'emara-v1.0.0';
+const CACHE_VERSION = 'bonyan-v1.0.1';
 const APP_SHELL = [
   './',
   './index.html',
@@ -18,6 +18,7 @@ const APP_SHELL = [
   './css/reports.css',
   './css/responsive.css',
   './css/print.css',
+  './css/assistant.css',
   './js/app.js',
   './js/config.js',
   './js/router.js',
@@ -42,6 +43,7 @@ const APP_SHELL = [
   './js/modules/maintenance.js',
   './js/modules/receipts.js',
   './js/modules/reports.js',
+  './js/modules/assistant.js',
   './js/modules/resident-portal.js',
   './js/modules/settings.js',
   './assets/icons/icon-192.png',
